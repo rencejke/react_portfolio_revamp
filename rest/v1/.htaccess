@@ -1,0 +1,65 @@
+RewriteEngine On
+# use for authentication
+RewriteCond %{HTTP:Authorization} ^(.+)$
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+Header set Access-Control-Allow-Origin *
+
+#################################### ALL FOR DEVELOPER #################################
+
+RewriteRule ^upload/photo$ core/upload-photo.php [L]
+
+### SETTING ROLES ###
+RewriteRule ^portfolio$ controllers/portfolio/portfolio.php [L]
+RewriteRule ^portfolio/([0-9]+)$ controllers/portfolio/portfolio.php?portfolioid=$1 [L]
+RewriteRule ^portfolio/active/([0-9]+)$ controllers/portfolio/active.php?portfolioid=$1 [L]
+RewriteRule ^portfolio/search$ controllers/portfolio/search.php [L]
+
+
+### SETTING ROLES ###
+RewriteRule ^banner$ controllers/banner/banner.php [L]
+RewriteRule ^banner/([0-9]+)$ controllers/banner/banner.php?bannerid=$1 [L]
+RewriteRule ^banner/active/([0-9]+)$ controllers/banner/active.php?bannerid=$1 [L]
+RewriteRule ^banner/search$ controllers/banner/search.php [L]
+
+
+
+### SETTING ROLES ###
+RewriteRule ^about$ controllers/about/about.php [L]
+RewriteRule ^about/([0-9]+)$ controllers/about/about.php?aboutid=$1 [L]
+RewriteRule ^about/active/([0-9]+)$ controllers/about/active.php?aboutid=$1 [L]
+RewriteRule ^about/search$ controllers/about/search.php [L]
+
+
+### SETTING ROLES ###
+RewriteRule ^exp$ controllers/exp/exp.php [L]
+RewriteRule ^exp/([0-9]+)$ controllers/exp/exp.php?expid=$1 [L]
+RewriteRule ^exp/active/([0-9]+)$ controllers/exp/active.php?expid=$1 [L]
+# RewriteRule ^exp/search$ controllers/exp/search.php [L]
+
+### SETTING ROLES ###
+RewriteRule ^projects$ controllers/projects/projects.php [L]
+RewriteRule ^projects/([0-9]+)$ controllers/projects/projects.php?projectsid=$1 [L]
+RewriteRule ^projects/active/([0-9]+)$ controllers/projects/active.php?projectsid=$1 [L]
+RewriteRule ^projects/search$ controllers/projects/search.php [L]
+
+### SETTING ROLES ###
+RewriteRule ^contact$ controllers/contact/contact.php [L]
+RewriteRule ^contact/([0-9]+)$ controllers/contact/contact.php?contactid=$1 [L]
+RewriteRule ^contact/active/([0-9]+)$ controllers/contact/active.php?contactid=$1 [L]
+RewriteRule ^contact/search$ controllers/contact/search.php [L]
+
+### SETTING ROLES ###
+RewriteRule ^services$ controllers/services/services.php [L]
+RewriteRule ^services/([0-9]+)$ controllers/services/services.php?servicesid=$1 [L]
+RewriteRule ^services/active/([0-9]+)$ controllers/services/active.php?servicesid=$1 [L]
+RewriteRule ^services/search$ controllers/services/search.php [L]
+
+
+### SETTING ROLES ###
+RewriteRule ^cta$ controllers/cta/cta.php [L]
+RewriteRule ^cta/([0-9]+)$ controllers/cta/cta.php?ctaid=$1 [L]
+RewriteRule ^cta/active/([0-9]+)$ controllers/cta/active.php?ctaid=$1 [L]
+RewriteRule ^cta/search$ controllers/cta/search.php [L]

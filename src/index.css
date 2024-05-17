@@ -1,0 +1,514 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Poppins-Black";
+  src: url(/fonts/Poppins-Black.woff) format("woff"),
+  url(/fonts/Poppins-Black.woff2) format("woff2");
+
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins-Regular";
+  src: url(/fonts/Poppins-Regular.woff) format("woff"),
+  url(/fonts/Poppins-Regular.woff2) format("woff2");
+
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins-Bold";
+  src: url(/fonts/Poppins-Bold.woff) format("woff"),
+  url(/fonts/Poppins-Bold.woff2) format("woff2");
+
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins-Medium";
+  src: url(/fonts/Poppins-Medium.woff) format("woff"),
+  url(/fonts/Poppins-Medium.woff2) format("woff2");
+
+  font-display: swap;
+}
+
+:root{
+  --primary: 255 255 255;
+  --secondary: 242 242 242;
+  --accent: 80 221 144;
+  --content: 0 0 0;
+  --line: 212 212 212;
+  --alert: 220 38 38;
+  --disable: 127 127 127;
+  --info: 68 130 208;
+  --warning: 177 130 47;
+}
+
+.dark{
+  --primary: 0 0 0;
+  --secondary: 22 22 22;
+  --accent: 80 221 144;
+  --content: 255 255 255;
+  --line: 14 14 14;
+  --alert: 220 38 38;
+  --disable: 127 127 127;
+  --info: 68 130 208;
+  --warning: 177 130 47;
+}
+
+label
+{
+  @apply font-regular uppercase text-[1rem] 
+}
+
+input
+{
+  @apply h-[40px] p-2 font-regular text-black border-[1.5px] rounded-md border-solid border-black w-[90%]
+}
+textarea
+{
+  @apply h-[130px] p-2 font-regular text-black border-[1.5px] rounded-md border-solid border-black w-[90%]
+} 
+
+@layer base {
+  
+  html {
+    @apply scroll-smooth
+  }
+     
+  body
+  {
+   @apply bg-[#081b29] dark:bg-[#ededed] font-regular
+  }
+
+  .navbar a
+  {
+   @apply text-[#ededed] hover:text-[#00abf0]
+  }
+
+  .btn-container a
+  {
+    @apply relative inline-flex w-[150px] h-[100%] bg-[#00abf0]
+    border-2 border-solid border-[#00abf0] rounded-md text-[15px]
+    text-[#081b29] font-semibold justify-center items-center z-[1] overflow-hidden
+    transition-all
+  }
+
+  .btn-container a
+  {
+    @apply before:content-[''] before:absolute before:top-0 before:left-0 before:w-0 
+    before:h-[100%] before:bg-[#081b29] before:z-[-1] before:transition-all
+
+    hover:before:w-[100%] hover:text-[#00abf0]
+  }
+ .btn-container a:nth-child(2)
+  {
+     @apply bg-transparent text-[#00abf0]
+     hover:text-[#081b29]
+     before:bg-[#00abf0]
+  }
+  .socials ul li 
+  {
+    @apply bg-[#ededed] text-[#081b29] rounded-full p-2 cursor-pointer transition-all
+
+  } 
+  .socials ul li 
+  {
+    @apply hover:bg-[#00abf0]
+  }
+  .scroll-btn
+  {
+    @apply absolute h-[50px] w-[32px] border-[3px] border-solid
+    border-[#ededed] left-0 right-0 bottom-2 rounded-[48px] mx-auto mb-6
+  }
+  .scroll-btn::before
+  {
+    @apply absolute content-[''] mx-auto left-0 right-0 
+    h-[10px] w-[10px] bg-[#ededed] rounded-full animate-move-down
+  }
+  /* .scroll-btn::after
+  {
+    @apply absolute content-['SCROLL_DOWN'] w-[192px] block text-center 
+    left-[-67.2px]  bottom-[-40px] text-[20px] tracking-[3px] font-bold 
+  } */
+  .abt-img::before,.abt-img::after
+  {
+    @apply content-[''] absolute bg-[#081b29] z-[-1]
+  }
+  .abt-img::before
+  {
+    @apply bottom-[-64px] left-0  w-[65%] h-[112px] rounded-bl-[#081b29]
+  }
+  .panel
+  {
+    @apply hidden
+  }
+  .panel.active
+  {
+    @apply block
+  }
+  #progressTop
+  {
+    @apply fixed bottom-[20px] right-[10px] 
+    h-[70px] w-[70px] opacity-0 grid place-items-center
+    rounded-full z-[100] cursor-pointer shadow-md
+  }
+  #progressTop-value
+  {
+    @apply  block h-[calc(100%-15px)] w-[calc(100%-15px)] bg-[#081b29]
+    rounded-full grid place-items-center text-[35px]
+  }
+  .projects .tab-item:nth-child(even)
+  {
+    @apply flex-row-reverse
+  }
+  .logo-header::before
+  {
+    @apply content-[''] w-[20px] h-[20px] bg-[#00abf0] absolute z-[-1]  bottom-9 left-[142px]
+  }
+ 
+  .container
+      {
+        @apply max-w-[1500px] w-full mx-auto px-4
+      }
+      
+  a{
+    @apply
+    text-content
+  }
+
+  ul {
+    @apply
+    list-none
+    text-content
+  }
+
+  img{
+    @apply
+    block
+    w-full
+    h-auto
+  }
+
+  h1,h2,h3,h4,h5,h6 {
+    @apply
+    font-bold
+    font-thicker
+  }
+
+  h1{
+    @apply
+    text-3xl
+    mb-4
+  }
+  h2{
+    @apply
+    text-xl
+    mb-4
+  }
+  h3{
+    @apply
+    text-lg
+    mb-2
+  }
+  h4{
+    @apply
+    text-base
+    mb-4
+  }
+
+  p{
+    @apply
+    mb-2
+    !leading-5
+    opacity-60
+  }
+  
+  table{
+    @apply
+    w-full
+    text-sm
+  }
+  
+  table th{
+    @apply
+    font-bold
+    py-4
+    px-2
+    text-left
+  }
+
+  table td{
+    @apply
+    p-2
+    text-left
+  }
+
+  table tbody tr:nth-child(odd){
+    @apply
+    bg-[#00abf0]
+    bg-opacity-50
+  }
+
+  .table-action ul{
+    @apply
+    flex
+    gap-4
+  }
+
+  .form-action{
+    @apply
+    flex
+    gap-4
+    justify-end
+  }
+
+  .tooltip{
+    @apply
+    text-base
+    relative
+  }
+
+  .tooltip:hover::after{
+    @apply
+    scale-100
+  }
+
+  .tooltip::after{
+    @apply
+    absolute
+    content-[attr(data-tooltip)]
+    text-xs
+    p-0.5
+    px-1.5
+    text-content
+    bg-primary 
+    bg-opacity-90
+    top-[calc(100%+10px)]
+    left-1/2
+    -translate-x-1/2
+    scale-0
+    transition-transform
+  }
+
+
+}
+
+@layer components {
+  .nav{
+    @apply
+    space-y-4 
+    mt-20
+  }
+
+  .nav-link{
+    @apply
+    p-2
+    pl-8
+  }
+
+  .nav-link a{
+    @apply
+    flex gap-3
+    items-center
+  }
+
+  .nav-link.active{
+    @apply
+    border-l
+    border-accent
+  }
+
+  .nav-link.active a{
+    @apply
+    text-accent
+  }
+
+  .tab-link{
+    @apply
+    px-3
+    py-5
+  }
+
+  .tab-link.active{
+    @apply
+    border-b border-accent
+  }
+
+  .tab-link.active a{
+    @apply
+    text-accent
+  }
+
+  /* btn New */
+  .btn{
+    @apply
+    px-2
+    py-1
+    rounded-md
+    text-sm
+    transition-colors
+    items-center
+    gap-2
+    flex
+  }
+  .btn:disabled{
+    @apply
+    cursor-not-allowed
+    opacity-60
+  }
+
+  .btn-form{
+    @apply
+    p-2 w-1/2 flex justify-center items-center gap-2
+  }
+
+  .btn--accent{
+    @apply
+    bg-[#00abf0]
+    text-white
+  }
+
+  .btn--cancel{
+    @apply
+    bg-disable
+    text-stone-800
+  }
+
+  .btn--alert{
+    @apply
+    bg-alert
+    text-white
+  }
+
+  .btn--info{
+    @apply
+    bg-info
+    text-white
+  }
+
+  .btn--warning{
+    @apply
+    bg-warning
+    text-white
+  }
+
+
+  /* Modal add new student *Modal */
+  .input-wrap{
+    @apply mb-3 relative
+  }
+
+  .input-wrap label{
+    @apply
+    mb-1
+    block
+  }
+
+  .input-wrap, 
+  .input-wrap select, 
+  .input-wrap textarea {
+    @apply
+    block
+    w-full
+    text-stone-800
+    focus:text-info
+    px-1
+    py-3
+    rounded-md
+    outline-none
+    border-2
+    focus:border-info
+    focus:bg-info/5
+  } 
+
+  .input-wrap small{
+    @apply
+    absolute
+    top-1
+    right-1
+    text-red-600
+    italic
+  }
+
+  /* SOmething loader */
+  .loading-bar::after {
+    @apply content-[''] absolute top-0 left-0 w-[180%] h-full  bg-gradient-to-r from-transparent via-black/40 to-transparent  animate-loading;
+  }
+
+    .item-cards
+    {
+      @apply bg-gray-500/20 p-8 items-center rounded-md mt-8
+    }
+    .item-cards h4
+    {
+      @apply text-3xl
+    }
+    .item-cards span
+    {
+      @apply flex gap-2 items-center
+    }
+
+}
+
+/* scrollbar of overflow */
+::-webkit-scrollbar {
+  width: 5px;
+  }
+  
+  ::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(16, 16, 16); 
+  border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+  background:rgba(54, 54, 54, 0.864); 
+  border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+  background:rgb(5, 103, 201); 
+  }
+
+  /* remopve of arrows in age number input */
+  /* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* SPINNER */
+.spinner circle {
+  fill: none;
+  /* stroke: var(--light); */
+  stroke-width: 6;
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  animation: dash 1s ease-in-out infinite;
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1,200;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 90, 200;
+    stroke-dashoffset: -35px;
+  }
+
+  100% {
+    stroke-dashoffset: -110px;
+  }
+
+}
