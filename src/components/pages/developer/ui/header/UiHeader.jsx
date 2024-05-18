@@ -32,11 +32,11 @@ const UiHeader = () => {
     flex justify-between items-center z-[99999]'>
         <Link className='logo-header text-[25px] text-[#ededed] font-semibold'>Clarence.</Link>
         <nav className='navbar text-[18px] font-bold flex gap-6'>
-               <Link to="/home">Home</Link>
-               <Link to="#">About</Link>
-               <Link to="#">Services</Link>
-               <Link to="/projects">Portfolio</Link>
-               <Link to="/contact">Contact</Link>
+               <HashLink to="/home">Home</HashLink>
+               <HashLink  smooth to="#about">About</HashLink>
+               <HashLink  smooth to="#services">Services</HashLink>
+               <HashLink  smooth to="/projects">Projects</HashLink>
+               <HashLink smooth to="/contact">Contact</HashLink>
         </nav>
     </header>
    </>

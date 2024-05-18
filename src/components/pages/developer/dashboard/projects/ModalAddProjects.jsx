@@ -45,10 +45,12 @@ const ModalAddProjects = ({itemEdit}) => {
 
     
      const initVal  = {
-          projects_num : itemEdit ? itemEdit.projects_num : "",
+          projects_category : itemEdit ? itemEdit.projects_category : "",
+          projects_category_num : itemEdit ? itemEdit.projects_category_num : "",
           projects_title : itemEdit ? itemEdit.projects_title : "",
           projects_image : itemEdit ? itemEdit.projects_image : "",
           projects_description : itemEdit ? itemEdit.projects_description : "", 
+          projects_tech : itemEdit ? itemEdit.projects_tech : "", 
           projects_btn_title : itemEdit ? itemEdit.projects_btn_title : "",
           projects_animation : itemEdit ? itemEdit.projects_animation : "",
         
@@ -57,9 +59,11 @@ const ModalAddProjects = ({itemEdit}) => {
 
      const yupSchema = Yup.object({
        
-        projects_num: Yup.string().required("Required"),
+        projects_category: Yup.string().required("Required"),
+        projects_category_num: Yup.string().required("Required"),
         projects_title: Yup.string().required("Required"),
         projects_description: Yup.string().required("Required"),
+        projects_tech: Yup.string().required("Required"),
         projects_btn_title: Yup.string().required("Required"),
         projects_animation: Yup.string().required("Required"),
 
@@ -71,7 +75,7 @@ const ModalAddProjects = ({itemEdit}) => {
   return (
     <div>
       <ModalWrapper>
-      <div className="main-modal w-[320px] bg-secondary text-content h-full">
+      <div className="main-modal w-[320px] bg-secondary  h-full text-[#ededed]">
                 <div className="modal-header p-4 relative">
                     <h2>New Student</h2>
                     <button className='absolute top-[25px] right-4' onClick={handleClose}><LiaTimesSolid/></button>
@@ -145,9 +149,17 @@ const ModalAddProjects = ({itemEdit}) => {
                                   
                         <div className="input-wrap">
                             <InputText
-                                label="Number"
-                                type="number"
-                                name="projects_num"
+                                label="Category"
+                                type="text"
+                                name="projects_category"
+                            />
+                        </div>
+
+                        <div className="input-wrap">
+                            <InputText
+                                label="Category Number"
+                                type="text"
+                                name="projects_category_num"
                             />
                         </div>
                             
@@ -165,6 +177,15 @@ const ModalAddProjects = ({itemEdit}) => {
                                 type="text"
                                 name="projects_description"
                                 className='h-[10rem] resize-none'
+                            />
+                        </div>
+
+                        <div className="input-wrap">
+                        <InputTextArea
+                                label="Tech"
+                                type="text"
+                                name="projects_tech"
+                                className='h-[5rem] resize-none'
                             />
                         </div>
                           

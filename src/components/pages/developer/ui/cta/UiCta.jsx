@@ -24,14 +24,15 @@ const UiCta = () => {
     <section className='cta'>
     
     <section className='cta'>
-       
+    {cta?.data.map((item, key) => (
+      item.cta_is_active === 1 && (
     <div className='text-center bg-[#0c1216] py-12'>
-    <h2 className='font-thick text-3xl'>Let's build something amazing together!</h2>
-    <p className='text-[22px] text-white'>Contact me and let's build your   website today!</p>
+    <h2 className='font-thick text-3xl'>{item.cta_title}</h2>
+    <p className='text-[22px] text-white'>{item.cta_msg}</p>
     <div className="container btn-container w-[345px] h-[50px] mt-6">
-             <Link><button> Let's Talk</button></Link>
+             <Link><button> {item.cta_btn_title}</button></Link>
              </div>
-    </div>
+    </div>)))}
    </section>
    </section>
   )

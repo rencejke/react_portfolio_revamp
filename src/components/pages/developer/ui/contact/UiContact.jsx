@@ -64,7 +64,7 @@ const UiContact = () => {
       <UiHeader/>
 
       <div className='bg-[#222831] text-white mt-12'>
-    <section className='contact mx-auto w-[100%] p-20'>
+    <section id='contact' className='contact mx-auto w-[100%] p-20'>
     <div className="wrapper  grid grid-cols-2 h-[560px]">
 
     <div className="left bg-[#081b29] p-6">

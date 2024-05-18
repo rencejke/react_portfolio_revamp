@@ -42,6 +42,7 @@ const UiAbout = () => {
   return (
 
     <>
+    <section id='about'>
        {about?.data.map((item, key) => (
              item.about_is_active === 1 && (<div id='about' className='bg-[#0c1216] pt-16 px-12 pb-12'>
              <div className="container">
@@ -68,7 +69,7 @@ const UiAbout = () => {
              </div>
              </div>
              </div>)))}
-    
+             </section>
     
     </>
   )

@@ -48,10 +48,12 @@ const ProjectsTable = ({setItemEdit, isLoading, isFetching, projects}) => {
                         <thead className='sticky top-0 relative z-10'>
                             <tr>
                                 <th className='w-[20px]'>#</th>
-                                <th className='w-[80px]'>Project Number</th>
-                                <th className='w-[80px]'>Title</th>
-                                <th className='w-[80px]'>Image</th>
-                                <th className='w-[80px]'>Description</th>
+                                <th className='w-[40px]'>Category</th>
+                                <th className='w-[40px]'>Category Number</th>
+                                <th className='w-[40px]'>Title</th>
+                                <th className='w-[30px]'>Image</th>
+                                <th className='w-[120px]'>Description</th>
+                                <th className='w-[120px]'>Technologies</th>
                                 <th className='w-[80px]'>Button Title</th>
                                 <th className='w-[80px]'>Data AOS Animation</th>
                                 <th className='w-[120px]'>Action</th>
@@ -77,10 +79,12 @@ const ProjectsTable = ({setItemEdit, isLoading, isFetching, projects}) => {
                     {projects?.data.map((item, key) => (
                         <tr key={key}>
                         <td>{counter++}</td>
-                        <td>{item.projects_num}</td>
+                        <td>{item.projects_category}</td>
+                        <td>{item.projects_category_num}</td>
                         <td>{item.projects_title}</td>
                         <td>{item.projects_image}</td>
                         <td>{item.projects_description}</td>
+                        <td>{item.projects_tech}</td>
                         <td>{item.projects_btn_title}</td>
                         <td>{item.projects_animation}</td>
                         

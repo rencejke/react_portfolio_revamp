@@ -3,9 +3,11 @@
 Class Projects {
     public $projects_aid;
     public $projects_title;
-    public $projects_num;
+    public $projects_category;
+    public $projects_category_num;
     public $projects_image;
     public $projects_description;
+    public $projects_tech;
     public $projects_is_active;
     public $projects_btn_title;
     public $projects_animation;
@@ -27,19 +29,23 @@ Class Projects {
     public function create() {
         try {
             $sql = "insert into {$this->tblProjects} ";
-            $sql .= "( projects_num, ";
+            $sql .= "( projects_category, ";
+            $sql .= "projects_category_num, ";
             $sql .= "projects_title, ";
             $sql .= "projects_image, ";
             $sql .= "projects_description, ";
+            $sql .= "projects_tech, ";
             $sql .= "projects_is_active, ";
             $sql .= "projects_btn_title, ";
             $sql .= "projects_animation, ";
             $sql .= "projects_created, ";
             $sql .= "projects_datetime ) values ( ";
-            $sql .= ":projects_num, ";
+            $sql .= ":projects_category, ";
+            $sql .= ":projects_category_num, ";
             $sql .= ":projects_title, ";
             $sql .= ":projects_image, ";
             $sql .= ":projects_description, ";
+            $sql .= ":projects_tech, ";
             $sql .= ":projects_is_active, ";
             $sql .= ":projects_btn_title, ";
             $sql .= ":projects_animation, ";
@@ -47,10 +53,12 @@ Class Projects {
             $sql .= ":projects_datetime ) ";
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "projects_num" => $this->projects_num,
+                "projects_category" => $this->projects_category,
+                "projects_category_num" => $this->projects_category_num,
                 "projects_title" => $this->projects_title,
                 "projects_image" => $this->projects_image,
                 "projects_description" => $this->projects_description,
+                "projects_tech" => $this->projects_tech,
                 "projects_is_active" => $this->projects_is_active,
                 "projects_btn_title" => $this->projects_btn_title,
                 "projects_animation" => $this->projects_animation,
@@ -97,20 +105,24 @@ Class Projects {
     {
         try {
             $sql = "update {$this->tblProjects} set ";
-            $sql .= "projects_num = :projects_num, ";
+            $sql .= "projects_category = :projects_category, ";
+            $sql .= "projects_category_num = :projects_category_num, ";
             $sql .= "projects_title = :projects_title, ";
             $sql .= "projects_image = :projects_image, ";
             $sql .= "projects_description = :projects_description, ";
+            $sql .= "projects_tech = :projects_tech, ";
             $sql .= "projects_btn_title = :projects_btn_title, ";
             $sql .= "projects_animation = :projects_animation, ";
             $sql .= "projects_datetime = :projects_datetime ";
             $sql .= "where projects_aid  = :projects_aid ";
             $query = $this->connection->prepare($sql);
             $query->execute([
-                "projects_num" => $this->projects_num,
+                "projects_category" => $this->projects_category,
+                "projects_category_num" => $this->projects_category_num,
                 "projects_title" => $this->projects_title,
                 "projects_image" => $this->projects_image,
                 "projects_description" => $this->projects_description,
+                "projects_tech" => $this->projects_tech,
                 "projects_btn_title" => $this->projects_btn_title,
                 "projects_animation" => $this->projects_animation,
                 "projects_datetime" => $this->projects_datetime,
