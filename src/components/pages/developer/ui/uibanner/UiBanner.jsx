@@ -45,20 +45,20 @@ return (
     {banner?.data.map((item, key) => (
              item.banner_is_active === 1 && (<section className='home h-[100vh] flex items-center py-0 px-[10%] relative'>
              <div className=' max-w-[600px] text-[#ededed] space-y-6'>
-             <h1 className='text-[56px] font-bold text-[#ededed]'>{item.banner_title_1}</h1>
+             <h1 className='text-[56px] font-bold text-[#ededed] leading-[3.5rem] md:leading-3'>{item.banner_title_1}</h1>
              <h3 className='text-[32px] font-bold text-[#00abf0] leading-10'>Web {text}<Cursor/></h3>
-              <p className='text-[#ededed] text-[16px] mt-5 mb-10 font-regular'>{item.banner_description}
+              <p className='text-[#ededed] text-[16px] mt-5 mb-10 font-regular text-wrap md:text-wrap'>{item.banner_description}
                      </p>
          
-                 <div className="btn-container flex w-[345px] h-[50px] justify-between">
+                 <div className="btn-container flex w-[300px] md:w-[345px] h-[50px] justify-around gap-2 md:justify-between">
                      <Link><button>{item.banner_btn_title}</button></Link>
                      <Link><button>{item.banner_btn_title_2}</button></Link>
                  </div>
          
-                 <img src={`${devBaseImgUrl}/${item.banner_image}`} className='absolute h-[715px] w-[550px] top-0 right-20 bottom-0 ' alt="" />
+                 <img src={`${devBaseImgUrl}/${item.banner_image}`} className='absolute h-[890px] w-[700px] top-0 right-20 bottom-0 invisible md:visible' alt="" />
                  
-                 <div className="socials bg-[#081b29] max-w-[300px] w-[300px] py-3  px-6 rounded-md absolute  right-10 bottom-16">
-                   <ul className='flex gap-5  text-[22px]  items-center'>
+                 <div className="socials bg-[#081b29] max-w-[800px] w-[400px] py-3  px-6 rounded-md absolute  right-5 md:right-10 bottom-[120px] md:bottom-[150px]">
+                   <ul className='flex gap-5  text-[26px]  items-center'>
                      <li><Link><FaFacebookF className='text-[#081b29]'/></Link></li>
                      <li><Link><FaTwitter className='text-[#081b29]'/></Link></li>
                      <li><Link><FaLinkedin className='text-[#081b29]'/></Link></li>

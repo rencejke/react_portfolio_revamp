@@ -5,6 +5,7 @@ use \Firebase\JWT\JWT;
 require "Database.php";
 require "Response.php";
 
+// checking the API Key
 function checkApiKey()
 {
     // validate apikey
@@ -30,6 +31,7 @@ function checkApiKey()
     }
 }
 
+// checking the Database connection
 function checkDbConnection()
 {
     try {
@@ -64,6 +66,7 @@ function checkQuery($query, $msg)
     }
 }
 
+// check what you are typing
 function invalidInput()
 {
     $response = new Response();
@@ -115,14 +118,7 @@ function checkId($id)
     }
 }
 
-// Read search
-function checkSearch($object)
-{
-    $query = $object->search();
-    checkQuery($query, "Empty records. (search core)");
-    return $query;
-}
-
+// for checking codes or OTP
 function checkKeyCode($key)
 {
     $response = new Response();
@@ -138,7 +134,7 @@ function checkKeyCode($key)
     }
 }
 
-// check search param
+// check search parameter
 function checkKeyword($keyword)
 {
     $response = new Response();
@@ -195,6 +191,7 @@ function checkReadById($object)
     return $query;
 }
 
+// For reset password key
 function checkReadKey($object)
 {
     $query = $object->readKey();
@@ -218,6 +215,7 @@ function checkActive($object)
     return $query;
 }
 
+// Delete
 function checkDelete($object)
 {
     $query = $object->delete();
@@ -292,7 +290,7 @@ function isNameExist($object, $name)
     checkExistence($count, "{$name} already exist.");
 }
 
-// compare name
+// compare name for update
 function compareName($object, $name_old, $name)
 {
     if (strtolower($name_old) !=  strtolower($name)) {
@@ -300,6 +298,7 @@ function compareName($object, $name_old, $name)
     }
 }
 
+// Forbid you to delete the items when it is being use at the same time
 function isAssociated($object)
 {
     $query = $object->checkAssociation();
@@ -355,4 +354,136 @@ function getQueriedData($query)
     $response->setData($returnData);
     $response->send();
     exit;
+}
+
+// Read search
+function checkSearch($object)
+{
+    $query = $object->search();
+    checkQuery($query, "Empty records. (search core)");
+    return $query;
+}
+
+// Reset password
+function checkResetPassword($object)
+{
+    $query = $object->resetPassword();
+    checkQuery($query, "There's a problem processing your request. (reset password)");
+    return $query;
+}
+
+// Set password
+function checkSetPassword($object)
+{
+    $query = $object->setPassword();
+    checkQuery($query, "There's a problem processing your request. (set password)");
+    return $query;
+}
+
+function checkLogin($object)
+{
+    $response = new Response();
+    $query = $object->readLogin();
+    if ($query->rowCount() == 0) {
+        $response->setSuccess(false);
+        $error["count"] = 0;
+        $error["success"] = false;
+        $error['error'] = "Invalid account. Please use a registered one.";
+        $response->setData($error);
+        $response->send();
+        exit;
+    }
+    return $query;
+}
+
+// Login access
+function loginAccess(
+    $password,
+    $hash_password,
+    $email,
+    $row,
+    $result,
+    $key
+) {
+    $response = new Response();
+    $error = [];
+    $returnData = [];
+    if (password_verify($password, $hash_password)) {
+        $payload = array(
+            "iss" => "localhost", // A string containing the name or identifier of the issuer application.
+            "aud" => "lcss",
+            "iat" => time(),  // timestamp of token issuing.
+            "data" => array("email" => $email, "data" => $row), // App payload
+        );
+        $jwt = JWT::encode($payload, $key, 'HS256');
+
+        http_response_code(200);
+        $returnData["data"] = [$row, $jwt];
+        $returnData["count"] = $result->rowCount();
+        $returnData["success"] = true;
+        $returnData["message"] = "Access granted.";
+        $response->setData($returnData);
+        $response->send();
+        exit;
+    } else {
+        $response->setSuccess(false);
+        $error["count"] = 0;
+        $error["success"] = false;
+        $error['error'] = "Access denied.";
+        $response->setData($error);
+        $response->send();
+        exit;
+    }
+    checkEndpoint();
+    http_response_code(200);
+    checkAccess();
+}
+
+//Token for developer
+function token(
+    $object,
+    $token,
+    $key
+) {
+    $response = new Response();
+    $error = [];
+    $returnData = [];
+
+    if (!empty($token)) {
+        try {
+            $decoded = JWT::decode($token, $key, array('HS256'));
+            $object->user_email = $decoded->data->email;
+            $result = checkLogin($object);
+            $row = $result->fetch(PDO::FETCH_ASSOC);
+
+            http_response_code(200);
+            $returnData["data"] = array_merge((array)$row);
+            $returnData["count"] = $result->rowCount();
+            $returnData["success"] = true;
+            $returnData["message"] = "Access granted.";
+            $response->setData($returnData);
+            $response->send();
+            return $returnData;
+        } catch (Exception $ex) {
+            $response->setSuccess(false);
+            $error["count"] = 0;
+            $error["success"] = false;
+            $error['error'] = "Catch no token found.";
+            $response->setData($error);
+            $response->send();
+            exit;
+        }
+    } else {
+        $response->setSuccess(false);
+        $error["count"] = 0;
+        $error["success"] = false;
+        $error['error'] = "No token found.";
+        $response->setData($error);
+        $response->send();
+        exit;
+    }
+
+    checkEndpoint();
+    http_response_code(200);
+    checkAccess();
 }

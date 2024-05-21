@@ -67,7 +67,7 @@ const ProjectsPage = () => {
   <section className='days-code p-8'>
     <div className='max-w-[950px] w-[100%] mx-auto mt-12'>
     <h3 className='text-[30px] mb-5 '>Days I <span className='text-[#00abf0]'>Code</span></h3>
-      <GitHubCalendar username='rencejke'  blockMargin={6}/>
+      <GitHubCalendar username='rencejke'  blockMargin={6} />
       </div>
     </section>
 

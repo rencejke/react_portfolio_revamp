@@ -75,7 +75,7 @@ const ModalAddProjects = ({itemEdit}) => {
   return (
     <div>
       <ModalWrapper>
-      <div className="main-modal w-[320px] bg-secondary  h-full text-[#ededed]">
+      <div className="main-modal w-[320px] bg-black text-white text-content h-full">
                 <div className="modal-header p-4 relative">
                     <h2>New Student</h2>
                     <button className='absolute top-[25px] right-4' onClick={handleClose}><LiaTimesSolid/></button>

@@ -26,6 +26,7 @@ RewriteRule ^banner/search$ controllers/banner/search.php [L]
 
 
 
+
 ### SETTING ROLES ###
 RewriteRule ^about$ controllers/about/about.php [L]
 RewriteRule ^about/([0-9]+)$ controllers/about/about.php?aboutid=$1 [L]
@@ -63,3 +64,14 @@ RewriteRule ^cta$ controllers/cta/cta.php [L]
 RewriteRule ^cta/([0-9]+)$ controllers/cta/cta.php?ctaid=$1 [L]
 RewriteRule ^cta/active/([0-9]+)$ controllers/cta/active.php?ctaid=$1 [L]
 RewriteRule ^cta/search$ controllers/cta/search.php [L]
+
+
+### SETTING USER###
+RewriteRule ^user$ controllers/user/user.php [L]
+RewriteRule ^user/([0-9]+)$ controllers/user/user.php?userid=$1 [L]
+RewriteRule ^user/active/([0-9]+)$ controllers/user/active.php?userid=$1 [L]
+RewriteRule ^user/search$ controllers/user/search.php [L]
+RewriteRule ^user/password$ controllers/user/set-password.php [L]
+RewriteRule ^user/reset$ controllers/user/reset-password.php [L]
+RewriteRule ^user/login$ controllers/user/login.php [L]
+RewriteRule ^user/token$ controllers/user/token.php [L]

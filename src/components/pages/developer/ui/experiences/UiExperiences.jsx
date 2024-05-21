@@ -37,7 +37,7 @@ const {
       item.exp_is_active === 1 && (
         <div className="item bg-[#31363F]/50 transition-all hover:bg-[#00abf0]  mx-auto p-12 rounded-md mb-3"
          data-aos={item.exp_image_animation}  data-aos-duration="1000">
-          <img src={`${devBaseImgUrl}/${item.exp_image}`} alt="" className='size-[90px]'/>
+          <img src={`${devBaseImgUrl}/${item.exp_image}`} alt="" className='md:size-[90px] size-[100%]'/>
         </div>)))}
       </div>
     </div>

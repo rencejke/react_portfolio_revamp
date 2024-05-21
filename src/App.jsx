@@ -13,6 +13,11 @@ import Contact from "./components/pages/developer/dashboard/contact/Contact"
 import UiContact from "./components/pages/developer/ui/contact/UiContact"
 import ProjectsPage from "./components/pages/developer/ui/ProjectsPage"
 import Projects from "./components/pages/developer/dashboard/projects/Projects"
+import Login from "./components/pages/developer/access/Login"
+import ForgotPassword from "./components/pages/developer/access/ForgotPassword"
+import CreatePassword from "./components/pages/developer/access/CreatePassword"
+import Users from "./components/pages/developer/dashboard/user/Users"
+import PageNotFound from "./components/partials/PageNotFound"
 
 function App() {
   const queryClient = new QueryClient
@@ -37,6 +42,13 @@ function App() {
 
         {/* // */}
         <Route path="/home" element={<Home/>}/>
+        <Route path="/users" element={<Users/>}/>
+
+
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/forgot-password" element={<ForgotPassword/>}/>
+        <Route path="/create-password" element={<CreatePassword/>}/>
+        <Route path="/*" element={<PageNotFound/>}/>
 
         </Routes>
       </Router>

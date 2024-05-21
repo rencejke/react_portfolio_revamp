@@ -24,7 +24,7 @@ const Navigation = () => {
       
   
       <ul className='nav'>
-      <li className={`nav-link ${activeLink === '/dashboard' ? 'active' : ''}`}>
+      <li className={`nav-link ${activeLink === '/dashboard' ? 'active' : ''} `}>
           <Link to="/dashboard" onClick={() => handleLinkClick('/dashboard')}><MdOutlineDashboard />Dashboard</Link>
         </li>
         
@@ -56,6 +56,10 @@ const Navigation = () => {
 
         <li className={`nav-link ${activeLink === '/cta' ? 'active' : ''}`}>
           <Link to="/cta" onClick={() => handleLinkClick('/services')}><MdOutlineDashboard />Cta</Link>
+        </li>
+
+        <li className={`nav-link ${activeLink === '/users' ? 'active' : ''}`}>
+          <Link to="/users" onClick={() => handleLinkClick('/users')}><MdOutlineDashboard />Users</Link>
         </li>
        
       </ul>

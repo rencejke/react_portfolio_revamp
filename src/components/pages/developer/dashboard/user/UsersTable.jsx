@@ -4,18 +4,17 @@ import NoData from '../../../../partials/NoData'
 import { LiaEdit, LiaHistorySolid, LiaTrashAltSolid } from 'react-icons/lia'
 import { PiArchive } from 'react-icons/pi'
 import SpinnerFetching from '../../../../partials/spinners/SpinnerFetching'
-import { StoreContext } from '../../../../../store/StoreContext'
-import { setIsActive, setIsAdd, setIsDelete } from '../../../../../store/StoreAction'
 import ModalConfirmed from '../../../../partials/modals/ModalConfirmed'
 import ModalDelete from '../../../../partials/modals/ModalDelete'
+import { StoreContext } from '../../../../../store/StoreContext'
+import { setIsActive, setIsAdd, setIsDelete } from '../../../../../store/StoreAction'
 
-const ProjectsTable = ({setItemEdit, isLoading, isFetching, projects}) => {
+const UsersTable = ({isLoading, isFetching, user, setItemEdit}) => {
     const {store, dispatch} = React.useContext(StoreContext)
     const [isArchiving, setIsArchiving] = React.useState(0);
     const [id, setId] = React.useState('');
 
    
-
     let counter = 1;
 
     const handleEdit = (item) => {
@@ -26,37 +25,31 @@ const ProjectsTable = ({setItemEdit, isLoading, isFetching, projects}) => {
     // archive is here
     const handleActive = (item) => {
         dispatch(setIsActive(true));
-        setId(item.projects_aid);
+        setId(item.user_aid);
         setIsArchiving(0);
     }
     const handleRestore = (item) => {
         dispatch(setIsActive(true));
-        setId(item.projects_aid);
+        setId(item.user_aid);
         setIsArchiving(1);
     }
 
     const handleDelete = (item) => {
         dispatch(setIsDelete(true));
-        setId(item.projects_aid);
+        setId(item.user_aid);
     }
 
   return (
     <>
-          <div className="table-wrapper relative overflow-y-scroll h-[600px]">
+          <div className="table-wrapper relative overflow-y-scroll h-[600px] bg-primary">
         {isFetching && <SpinnerFetching/>}
-        <table className='text-[#ededed] font-regular'>
-                        <thead className='sticky top-0 relative z-10 bg-[#081b29]'>
+                    <table>
+                        <thead className='sticky top-0 relative z-10 bg-primary'>
                             <tr>
                                 <th className='w-[20px]'>#</th>
-                                <th className='w-[40px]'>Category</th>
-                                <th className='w-[40px]'>Category Number</th>
-                                <th className='w-[40px]'>Title</th>
-                                <th className='w-[30px]'>Image</th>
-                                <th className='w-[120px]'>Description</th>
-                                <th className='w-[120px]'>Technologies</th>
-                                <th className='w-[80px]'>Button Title</th>
-                                <th className='w-[80px]'>Data AOS Animation</th>
-                                <th className='w-[120px]'>Action</th>
+                                <th className='w-[150px]'>Name</th>
+                                <th className='w-[80px]'>Email</th>
+                                <th className='w-[100px]'>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -69,29 +62,24 @@ const ProjectsTable = ({setItemEdit, isLoading, isFetching, projects}) => {
                 </tr>)
                 }
 
-                {projects?.data.length === 0 && (
+                {user?.data.length === 0 && (
                     <tr>
                         <td colSpan={9}>
                             <NoData/>
                         </td>
                     </tr>
                 )}
-                    {projects?.data.map((item, key) => (
+                    {user?.data.map((item, key) => (
                         <tr key={key}>
                         <td>{counter++}</td>
-                        <td>{item.projects_category}</td>
-                        <td>{item.projects_category_num}</td>
-                        <td>{item.projects_title}</td>
-                        <td>{item.projects_image}</td>
-                        <td>{item.projects_description}</td>
-                        <td>{item.projects_tech}</td>
-                        <td>{item.projects_btn_title}</td>
-                        <td>{item.projects_animation}</td>
+                        <td>{item.user_name}</td>
+                        <td>{item.user_email}</td>
+
                         
                         
                         <td className='table-action'>
                         <ul>
-                            {item.projects_is_active ? (
+                            {item.user_is_active ? (
                                 <>
                                     <li><button className="tooltip" data-tooltip="Edit" onClick={()=>handleEdit(item)}><LiaEdit/></button></li>
                                     <li><button className="tooltip" data-tooltip="Archive" onClick={()=>handleActive(item)}><PiArchive /></button></li>
@@ -112,11 +100,11 @@ const ProjectsTable = ({setItemEdit, isLoading, isFetching, projects}) => {
                     </table>
                 </div>
 
-                {store.isActive && <ModalConfirmed position="center"  queryKey="projects" endpoint={`/v1/projects/active/${id}`} isArchiving={isArchiving}/>}
+                {store.isActive && <ModalConfirmed position="center"  queryKey="user" endpoint={`/v1/user/active/${id}`} isArchiving={isArchiving}/>}
 
-                {store.isDelete && <ModalDelete position="center"  queryKey="projects" endpoint={`/v1/projects/${id}`} />} 
+                {store.isDelete && <ModalDelete position="center"  queryKey="user" endpoint={`/v1/user/${id}`} />} 
     </>
   )
 }
 
-export default ProjectsTable
+export default UsersTable

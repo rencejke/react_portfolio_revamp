@@ -80,7 +80,7 @@ textarea
      
   body
   {
-   @apply bg-[#081b29] dark:bg-[#ededed] font-regular
+   @apply bg-[#081b29] text-white  font-regular
   }
 
   .navbar a
@@ -166,23 +166,18 @@ textarea
   }
   .logo-header::before
   {
-    @apply content-[''] w-[20px] h-[20px] bg-[#00abf0] absolute z-[-1]  bottom-9 left-[142px]
+    @apply content-[''] w-[20px] h-[20px] bg-[#00abf0] absolute z-[-1]  bottom-9 left-[180px]
   }
  
   .container
       {
-        @apply max-w-[1500px] w-full mx-auto px-4
+        @apply md:max-w-[1500px] w-full mx-auto px-4
       }
       
-  a{
-    @apply
-    text-content
-  }
 
   ul {
     @apply
     list-none
-    text-content
   }
 
   img{
@@ -451,6 +446,15 @@ textarea
     }
  
 
+}
+
+
+img {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 }
 
 /* scrollbar of overflow */

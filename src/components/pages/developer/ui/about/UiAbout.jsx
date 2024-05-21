@@ -46,13 +46,13 @@ const UiAbout = () => {
        {about?.data.map((item, key) => (
              item.about_is_active === 1 && (<div id='about' className='bg-[#0c1216] pt-16 px-12 pb-12'>
              <div className="container">
-             <div className='wrapper flex gap-[90px] items-center'>
+             <div className='wrapper grid grid-rows-2 gap-1 md:flex md:flex-row  md:gap-[90px] items-center'>
          
-               <div className='left ml-[95px]'>
+               <div className='left md:ml-[95px]'>
                <small className='text-[16px] mb-12 text-[#00abf0]'>{item.about_small_title}</small>
                  <h3 className='text-[35px] mt-3 font-regular font-bold '>{item.about_title} {text}<Cursor/></h3>
              
-                 <div className='abt-img w-[320px] bg-[#00abf0] px-6 mx-auto mt-8 rounded-md'>
+                 <div className='abt-img md:w-[320px] w-[300px] bg-[#00abf0] px-6 mx-auto mt-8 rounded-md'>
                  <img src={`${devBaseImgUrl}/${item.about_image}`} alt="" className=''/>
                  </div>
                </div>

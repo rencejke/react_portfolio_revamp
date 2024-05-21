@@ -24,9 +24,9 @@ const UiFooter = () => {
 
       </div>
       <div className="footer-item flex flex-col ">
-      <span className='text-[1.4rem] text-[#081b29]'>Contact Me</span>
+      <span className='text-[1.4rem]'>Contact Me</span>
       
-      <ul className='mt-3 flex flex-col gap-2'>
+      <ul className='mt-3 flex flex-col gap-2 text-[#ededed]'>
         <li className='text-[15px] flex flex-row items-center gap-2'><FaMobileScreen />123456789</li>
         <li className='text-[15px] flex flex-row items-center gap-2'><MdEmail />bonillaclarencejake@gmail.com</li>
       </ul>

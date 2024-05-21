@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 17, 2024 at 09:24 PM
+-- Generation Time: May 20, 2024 at 08:56 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -218,10 +218,12 @@ INSERT INTO `portfolio` (`portfolio_aid`, `portfolio_title`, `portfolio_image`, 
 
 CREATE TABLE `projects` (
   `projects_aid` int(11) NOT NULL,
-  `projects_num` int(11) NOT NULL,
+  `projects_category` varchar(20) NOT NULL,
+  `projects_category_num` varchar(20) NOT NULL,
   `projects_title` varchar(20) NOT NULL,
   `projects_image` varchar(100) NOT NULL,
   `projects_description` varchar(600) NOT NULL,
+  `projects_tech` varchar(100) NOT NULL,
   `projects_btn_title` varchar(20) NOT NULL,
   `projects_animation` varchar(20) NOT NULL,
   `projects_is_active` tinyint(1) NOT NULL,
@@ -233,13 +235,17 @@ CREATE TABLE `projects` (
 -- Dumping data for table `projects`
 --
 
-INSERT INTO `projects` (`projects_aid`, `projects_num`, `projects_title`, `projects_image`, `projects_description`, `projects_btn_title`, `projects_animation`, `projects_is_active`, `projects_datetime`, `projects_created`) VALUES
-(1, 1, 'MATH-ALINO GAME', 'https://via.placeholder.com/300x300', 'This project is an interactive and engaging game that’s all about math that is specifically made for grades 1-3 students of Sta Maria Magdalena Elementary School. The game uses colorful graphics, good animation and it is user-friendly.', 'Learn More', 'fade-left', 1, '2024-05-13 08:42:05', '2024-05-13 08:42:05'),
-(4, 2, 'FIGURINIZA - ONLINE ', 'https://via.placeholder.com/300x300', 'This project is an online shop specifically for Anime lovers. Admins can easily add, update or delete some items in the shop. The website is user friendly and users can easily the details of the anime figurines.', 'Learn More', 'fade-left', 1, '2024-05-13 09:04:17', '2024-05-13 09:04:17'),
-(5, 3, 'ONLINE LIBRARY MANAG', 'https://via.placeholder.com/300x300', 'This\n           project is an online library system that makes it easy for people to borrow and book books. Users can log in, reserve a\n            book, and borrow it. The librarians can keep track of who is using the books and manage everything smoothly.', 'Learn More', 'fade-left', 1, '2024-05-13 09:05:38', '2024-05-13 09:05:38'),
-(6, 5145145, 'aSNajsbAJHHBSHA', 'ASAsaS', 'asASas', 'aSas', 'ASASas', 0, '2024-05-14 11:32:35', '2024-05-14 11:24:14'),
-(7, 5, 'alice', 'm-11.jpg', 'aSAsS', 'Asasa', 'asas', 0, '2024-05-14 11:32:30', '2024-05-14 11:28:26'),
-(8, 6666, 'asasas', 'm-loopers.jpg', 'asasas', 'asas', 'asas', 0, '2024-05-14 11:32:27', '2024-05-14 11:29:45');
+INSERT INTO `projects` (`projects_aid`, `projects_category`, `projects_category_num`, `projects_title`, `projects_image`, `projects_description`, `projects_tech`, `projects_btn_title`, `projects_animation`, `projects_is_active`, `projects_datetime`, `projects_created`) VALUES
+(12, 'Web Development', '2', 'Techida Clone', 'collab-techida.PNG', 'A cloned project: Techida - IT Solutions & Business Services Responsive HTML5 Bootstrap5 template is the ultimate solution for businesses\n\nin the technology sector. Designed with the latest Bootstrap 5, this template is perfect for showcasing your products and services, while providing a professional and modern online presence.', 'HTML. CSS, JS, TAILWIND, WORDPRESS', 'Leanr More', 'None', 1, '2024-05-18 23:01:23', '2024-05-18 22:54:52'),
+(13, 'Web Development', '2', 'FCA Clone Page', 'faqs.PNG', 'A cloned project: Frontline Christian Academy, Inc. (FCA) began initially as a home school for the staff children of the Philippine Frontline Ministries, Inc., (PFM) (www.thefrontline.asia). Later PFM decided to pursue solutions for abandoned and abused street children, and established a child care initiative named Face the Children (FTC) (www.facethechildren.org).', 'HTML, CSS, JS, TAILWIND', 'Learn More', 'None', 1, '2024-05-18 23:16:31', '2024-05-18 22:59:29'),
+(14, 'Web Development', '2', 'Frontline Business S', 'frontline-web.PNG', 'A cloned project: Frontline Business Solutions is a company based in San Pablo City, Laguna, Philippines. Offers website design, web hosting, accounting, and SEO.', 'HTMLC CSS, JS, TAILWIND', 'Learn More', 'None', 1, '2024-05-18 23:07:34', '2024-05-18 23:07:34'),
+(15, 'Web Development', '2', 'Insights Clone', 'insights.PNG', 'A cloned project: Insights Clone is a project that is given to us by our instructor last month of year 2024', 'HTML, CSS, JS', 'Learn More', 'None', 1, '2024-05-18 23:13:09', '2024-05-18 23:12:22'),
+(16, 'Web Development', '2', 'Library Management S', 'LMS.PNG', 'Library Management System that can handle everyday transactions of a library. Admin can view, update, add, delete books and students can borrow or return book', 'HTML, CSS, JS, PHP', 'Learn More', 'None', 1, '2024-05-18 23:16:02', '2024-05-18 23:16:02'),
+(17, 'Web Development', '2', 'Michi Ramen', 'michi-ramen.PNG', 'A cloned project: Michi ramen is a cloned project', 'HTML, CSS, REACT, TAILWIND', 'Learn More', 'None', 1, '2024-05-18 23:19:56', '2024-05-18 23:19:56'),
+(18, 'Web Development', '2', 'Online Shop', 'onlineShop.PNG', 'This project allows user to buy anime figures. Admin can add, update, delete, and view products', 'HTML. CSS. PHP, JS', 'Learn More', 'None', 1, '2024-05-18 23:22:17', '2024-05-18 23:22:17'),
+(19, 'Web Development', '2', 'Netflix Clone', 'react-netflix.PNG', 'A cloned project:  Netflix is a subscription-based streaming service that allows our members to watch TV shows and movies on an internet-connected device.', 'HTML, CSS, REACT, PHP, REST API', 'Learn More', 'None', 1, '2024-05-18 23:25:06', '2024-05-18 23:25:06'),
+(20, 'Web Development', '2', 'Youtube', 'react-youtube.PNG', 'A cloned project: ouTube is a free video sharing website that makes it easy to watch online videos. You can even create and upload your own videos to share with others. Originally created in 2005, YouTube is now one of the most popular sites on the Web, with visitors watching around 6 billion hours of video every month.', 'HTML, CSS, REACT', 'Learn More', 'None', 1, '2024-05-18 23:26:41', '2024-05-18 23:26:41'),
+(21, 'Mobile Development', '2', 'Math-alino', 'math-alino.jpg', 'This project is an interactive and engaging game that’s all about math that is specifically made for grades 1-3 students of Sta Maria Magdalena Elementary School. The game uses colorful graphics, good animation and it is user-friendly.', 'C#, Unity, Canva', 'Learn More', 'None', 1, '2024-05-19 00:00:42', '2024-05-19 00:00:42');
 
 -- --------------------------------------------------------
 
@@ -263,8 +269,10 @@ CREATE TABLE `services` (
 --
 
 INSERT INTO `services` (`services_aid`, `services_type`, `services_image`, `services_description`, `services_btn_title`, `services_is_active`, `services_created`, `services_datetime`) VALUES
-(1, 'ihsdjhsdjh', 'sdsdkjsdk', 'sadasjdhjsahdjsahdjsahd', 'sdsajkhdjsahdsja', 0, '2024-05-14 06:52:26', '2024-05-14 12:18:27'),
-(2, 'hgASHGahsfAGS', 'm-rio.jpg', 'adsAHIGSHagsha', 'AsaJSHJGjahs', 0, '2024-05-14 12:18:10', '2024-05-14 12:18:25');
+(1, 'Web Development', 's1.png', 'If you need a website for your project or personal brand, Im here to help. Lets collaborate to make your ideas come to life on the web!', 'Contact Me', 1, '2024-05-14 06:52:26', '2024-05-19 00:45:54'),
+(2, 'UI and UX Design', 's2.png', 'Lets make apps and websites easy and fun to use! I can help you with UI and UX design. If you want websites or apps to look better and work smoothly, lets team up', 'Contact Me', 1, '2024-05-14 12:18:10', '2024-05-19 00:46:03'),
+(3, 'Video And Photo Editting', 's3.png', 'Transform your videos into something special! Im here to help with video and photo editing. Whether its fixing little mistakes or adding cool effects, lets make your videos and photo stand out together.', 'Contact Me', 1, '2024-05-19 00:38:32', '2024-05-19 00:47:12'),
+(4, 'Video and Photo Editting', 's3.png', 'Transform your videos into something special! Im here to help with video and photo editing. Whether its fixing little mistakes or adding cool effects, lets make your videos and photo stand out together.', 'Contact Me', 1, '2024-05-19 00:38:39', '2024-05-19 01:23:21');
 
 --
 -- Indexes for dumped tables
@@ -362,13 +370,13 @@ ALTER TABLE `portfolio`
 -- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `projects_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `projects_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `services_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `services_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
